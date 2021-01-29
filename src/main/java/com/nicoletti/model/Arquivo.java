@@ -15,7 +15,6 @@ public class Arquivo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 512, nullable = false, unique = true)
 	private String name;
 		
 	private byte[] content;
@@ -23,6 +22,17 @@ public class Arquivo {
 	private long size;
 	
 	private Date uploadTime;
+	
+
+	public Arquivo(Long id, String name, long size) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.size = size;
+	}
+
+	public Arquivo() {
+	}
 
 	public Long getId() {
 		return id;
