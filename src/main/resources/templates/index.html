@@ -9,7 +9,7 @@
 	<div class="container-fluid text-center">
 	
 		<div>
-			<h1>Gerenciamento de Arquivos</h1>
+			<h1>Gerenciamento de Arquivos (Banco de dados)</h1>
 		</div>
 		
 		<div class="text-success">
@@ -33,6 +33,45 @@
 		</div>
 		
 		<form th:action="@{/upload}" method="post"
+			enctype="multipart/form-data"
+			style="max-width: 600px; margin: 0 auto"
+			>
+		<div class="border rounded m-3">
+			<h2>Upload de Arquivos:</h2>
+			<p>
+				<input type="file" name="arquivo" required />
+			</p>
+			<p>
+				<input type="submit" value="Upload" class="btn btn-primary" />
+			</p>
+		</div>
+		</form>
+		
+	</div>
+	
+	<div class="container-fluid text-center">
+		<div>
+			<h1>Gerenciamento de Arquivos (File Server)</h1>
+		</div>
+		
+		<div class="text-success">
+			<h3>[[${messageFileServer}]]</h3>
+		</div>
+		
+		<div class="row border rounded m-3 p-3">
+			<th:block th:each="doc : ${listArquivosFileServer}">
+				<div class="col">
+					<div>
+						<img th:src="@{/images/document.png}" width="50" />
+					</div>
+					<div>
+						<a th:href="@{'/downloadFileServer?name=' + ${doc.name}}">[[${doc.name}]]</a>
+					</div>
+				</div>
+			</th:block>
+		</div>
+		
+		<form th:action="@{/uploadFileServer}" method="post"
 			enctype="multipart/form-data"
 			style="max-width: 600px; margin: 0 auto"
 			>
